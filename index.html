@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="cv.css" rel="stylesheet" />
+    <title>Générateur de CV</title>
+</head>
+
+<body>
+    <div class="display">
+        <div class="formulaire">
+            <h2>Générateur de CV</h2>
+            <form name="formulaire" action="cv.php" onsubmit="return validation()" method="post"
+                enctype="multipart/form-data">
+                
+                <div class="section-title">INFORMATIONS GÉNÉRALES</div>
+                <ul>
+                    <li>
+                        <label for="photo">Photo de profil</label><br>
+                        <input type="file" id="photo" name="photo" accept="image/*" />
+                    </li>
+                    <li>
+                        <label for="nom">Nom</label><br>
+                        <input type="text" id="nom" name="nom" />
+                    </li>
+                    <li>
+                        <label for="prenom">Prénom</label><br>
+                        <input type="text" id="prenom" name="prenom" />
+                    </li>
+                    <li>
+                        <label for="titre">Titre professionnel</label><br>
+                        <input type="text" id="titre" name="titre" placeholder="Ex: Développeur Full-Stack" />
+                    </li>
+                    <li>
+                        <label for="mail">Adresse mail</label><br>
+                        <input type="email" id="mail" name="mail" />
+                    </li>
+                    <li>
+                        <label for="adresse">Adresse</label><br>
+                        <input type="text" id="adresse" name="adresse" placeholder="Ville, Pays" />
+                    </li>
+                    <li>
+                        <label for="numero">Numéro de téléphone</label><br>
+                        <input type="tel" id="numero" name="numero" />
+                    </li>
+                    <li>
+                        <label for="description">À propos de moi</label><br>
+                        <textarea id="description" name="description" rows="4" placeholder="Décrivez votre profil en quelques lignes..."></textarea>
+                    </li>
+                </ul>
+
+                <div class="section-title">RÉSEAUX SOCIAUX</div>
+                <ul>
+                    <li>
+                        <label for="linkedin">LinkedIn</label><br>
+                        <input type="text" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/votre-profil" />
+                    </li>
+                    <li>
+                        <label for="github">GitHub</label><br>
+                        <input type="text" id="github" name="github" placeholder="https://github.com/votre-username" />
+                    </li>
+                    <li>
+                        <label for="portfolio">Portfolio / Site Web</label><br>
+                        <input type="text" id="portfolio" name="portfolio" placeholder="https://votre-portfolio.com" />
+                    </li>
+                </ul>
+
+                <div class="section-title">COMPÉTENCES TECHNIQUES</div>
+                <section class="competences">
+                    <div class="comp-grid">
+                        <div>
+                            <input type="checkbox" id="HTML" name="competences[]" value="HTML">
+                            <label for="HTML">HTML</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="CSS" name="competences[]" value="CSS">
+                            <label for="CSS">CSS</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="JavaScript" name="competences[]" value="JavaScript">
+                            <label for="JavaScript">JavaScript</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="PHP" name="competences[]" value="PHP">
+                            <label for="PHP">PHP</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Python" name="competences[]" value="Python">
+                            <label for="Python">Python</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Java" name="competences[]" value="Java">
+                            <label for="Java">Java</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="C" name="competences[]" value="C">
+                            <label for="C">C</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="React" name="competences[]" value="React">
+                            <label for="React">React</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Node" name="competences[]" value="Node.js">
+                            <label for="Node">Node.js</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="SQL" name="competences[]" value="SQL">
+                            <label for="SQL">SQL</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Git" name="competences[]" value="Git">
+                            <label for="Git">Git</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Docker" name="competences[]" value="Docker">
+                            <label for="Docker">Docker</label>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="section-title">LANGUES</div>
+                <div class="langue-section">
+                    <div class="langue-item">
+                        <label for="langue1">Langue 1</label>
+                        <input type="text" id="langue1" name="langue1" placeholder="Ex: Français" />
+                        <select name="niveau_langue1">
+                            <option value="">Niveau</option>
+                            <option value="Débutant">Débutant</option>
+                            <option value="Intermédiaire">Intermédiaire</option>
+                            <option value="Avancé">Avancé</option>
+                            <option value="Courant">Courant</option>
+                            <option value="Natif">Natif</option>
+                        </select>
+                    </div>
+                    <div class="langue-item">
+                        <label for="langue2">Langue 2</label>
+                        <input type="text" id="langue2" name="langue2" placeholder="Ex: Anglais" />
+                        <select name="niveau_langue2">
+                            <option value="">Niveau</option>
+                            <option value="Débutant">Débutant</option>
+                            <option value="Intermédiaire">Intermédiaire</option>
+                            <option value="Avancé">Avancé</option>
+                            <option value="Courant">Courant</option>
+                            <option value="Natif">Natif</option>
+                        </select>
+                    </div>
+                    <div class="langue-item">
+                        <label for="langue3">Langue 3</label>
+                        <input type="text" id="langue3" name="langue3" placeholder="Ex: Espagnol" />
+                        <select name="niveau_langue3">
+                            <option value="">Niveau</option>
+                            <option value="Débutant">Débutant</option>
+                            <option value="Intermédiaire">Intermédiaire</option>
+                            <option value="Avancé">Avancé</option>
+                            <option value="Courant">Courant</option>
+                            <option value="Natif">Natif</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section-title">FORMATIONS</div>
+                <div class="multi-section">
+                    <div class="formation-item">
+                        <label>Formation 1</label>
+                        <input type="text" name="formation1" placeholder="Intitulé du diplôme" />
+                        <input type="text" name="lieu1" placeholder="Établissement" />
+                        <div class="date-range">
+                            <input type="date" name="debut_formation1" />
+                            <input type="date" name="fin_formation1" />
+                        </div>
+                    </div>
+                    <div class="formation-item">
+                        <label>Formation 2</label>
+                        <input type="text" name="formation2" placeholder="Intitulé du diplôme" />
+                        <input type="text" name="lieu2" placeholder="Établissement" />
+                        <div class="date-range">
+                            <input type="date" name="debut_formation2" />
+                            <input type="date" name="fin_formation2" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">EXPÉRIENCES PROFESSIONNELLES</div>
+                <div class="multi-section">
+                    <div class="experience-item">
+                        <label>Expérience 1</label>
+                        <input type="text" name="poste1" placeholder="Intitulé du poste" />
+                        <input type="text" name="entreprise1" placeholder="Nom de l'entreprise" />
+                        <div class="date-range">
+                            <input type="date" name="debut_experience1" />
+                            <input type="date" name="fin_experience1" />
+                        </div>
+                        <textarea name="missions1" rows="3" placeholder="Description des missions"></textarea>
+                    </div>
+                    <div class="experience-item">
+                        <label>Expérience 2</label>
+                        <input type="text" name="poste2" placeholder="Intitulé du poste" />
+                        <input type="text" name="entreprise2" placeholder="Nom de l'entreprise" />
+                        <div class="date-range">
+                            <input type="date" name="debut_experience2" />
+                            <input type="date" name="fin_experience2" />
+                        </div>
+                        <textarea name="missions2" rows="3" placeholder="Description des missions"></textarea>
+                    </div>
+                </div>
+
+                <div class="section-title">PROJETS</div>
+                <div class="multi-section">
+                    <div class="projet-item">
+                        <label>Projet 1</label>
+                        <input type="text" name="projet1_nom" placeholder="Nom du projet" />
+                        <textarea name="projet1_desc" rows="2" placeholder="Description du projet"></textarea>
+                        <input type="text" name="projet1_tech" placeholder="Technologies utilisées (ex: React, Node.js)" />
+                    </div>
+                    <div class="projet-item">
+                        <label>Projet 2</label>
+                        <input type="text" name="projet2_nom" placeholder="Nom du projet" />
+                        <textarea name="projet2_desc" rows="2" placeholder="Description du projet"></textarea>
+                        <input type="text" name="projet2_tech" placeholder="Technologies utilisées" />
+                    </div>
+                </div>
+
+                <div class="section-title">CERTIFICATIONS</div>
+                <ul>
+                    <li>
+                        <input type="text" name="certification1" placeholder="Nom de la certification" />
+                    </li>
+                    <li>
+                        <input type="text" name="certification2" placeholder="Nom de la certification" />
+                    </li>
+                    <li>
+                        <input type="text" name="certification3" placeholder="Nom de la certification" />
+                    </li>
+                </ul>
+
+                <div class="section-title">CENTRES D'INTÉRÊT</div>
+                <ul>
+                    <li>
+                        <textarea name="interets" rows="3" placeholder="Ex: Photographie, Voyages, Sport, Musique..."></textarea>
+                    </li>
+                </ul>
+
+                <section class="buttons">
+                    <input type="submit" value="Générer le CV" name="Envoyer" />
+                    <input type="reset" value="Réinitialiser" name="Reset" />
+                </section>
+            </form>
+        </div>
+
+        <div class="cv">
+            <div class="cv-preview-text">
+                <h3>Aperçu du CV</h3>
+                <p>Remplissez le formulaire à gauche pour voir votre CV prendre forme ici !</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="cv.js"></script>
+</body>
+
+</html>

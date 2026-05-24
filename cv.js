@@ -1,75 +1,110 @@
 function validation() {
     var nom = document.forms["formulaire"]["nom"];
-var prénom = document.forms["formulaire"]["prénom"];
-if (nom.value == "") {
-    alert("Mettez votre nom.");
-    nom.focus();
-    return false;
-}
-if (prénom.value == ""){
-    alert("Mettez votre prénom.");
-    prénom.focus();
-    return false;
-}
-if (titre.value == ""){
-    alert("Mettez votre titre.");
-    titre.focus();
-    return false;
-}
-if (mail.value == ""){
-    alert("Mettez votre mail.");
-    mail.focus();
-    return false;
-}
-if (numéro.value == ""){
-    alert("Mettez votre numéro.");
-    numéro.focus();
-    return false;
-}
-if (adresse.value == ""){
-    alert("Mettez votre adresse.");
-    adresse.focus();
-    return false;
+    var prenom = document.forms["formulaire"]["prenom"];
+    var titre = document.forms["formulaire"]["titre"];
+    var mail = document.forms["formulaire"]["mail"];
+    var numero = document.forms["formulaire"]["numero"];
+    var adresse = document.forms["formulaire"]["adresse"];
+    var description = document.forms["formulaire"]["description"];
+
+    if (nom.value == "") {
+        alert("Veuillez entrer votre nom.");
+        nom.focus();
+        return false;
+    }
+
+    if (prenom.value == "") {
+        alert("Veuillez entrer votre prénom.");
+        prenom.focus();
+        return false;
+    }
+
+    if (titre.value == "") {
+        alert("Veuillez entrer votre titre professionnel.");
+        titre.focus();
+        return false;
+    }
+
+    if (mail.value == "") {
+        alert("Veuillez entrer votre adresse email.");
+        mail.focus();
+        return false;
+    }
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(mail.value)) {
+        alert("Veuillez entrer une adresse email valide.");
+        mail.focus();
+        return false;
+    }
+
+    if (numero.value == "") {
+        alert("Veuillez entrer votre numéro de téléphone.");
+        numero.focus();
+        return false;
+    }
+
+    if (adresse.value == "") {
+        alert("Veuillez entrer votre adresse.");
+        adresse.focus();
+        return false;
+    }
+
+    if (description.value == "") {
+        alert("Veuillez entrer une description (À propos de vous).");
+        description.focus();
+        return false;
+    }
+
+    var competences = document.querySelectorAll('input[name="competences[]"]:checked');
+    if (competences.length === 0) {
+        alert("Veuillez sélectionner au moins une compétence.");
+        return false;
+    }
+
+    var formation1 = document.forms["formulaire"]["formation1"].value;
+    var formation2 = document.forms["formulaire"]["formation2"].value;
+    
+    if (formation1 == "" && formation2 == "") {
+        alert("Veuillez renseigner au moins une formation.");
+        document.forms["formulaire"]["formation1"].focus();
+        return false;
+    }
+
+    var poste1 = document.forms["formulaire"]["poste1"].value;
+    var poste2 = document.forms["formulaire"]["poste2"].value;
+    
+    if (poste1 == "" && poste2 == "") {
+        alert("Veuillez renseigner au moins une expérience professionnelle.");
+        document.forms["formulaire"]["poste1"].focus();
+        return false;
+    }
+
+    console.log("Formulaire valide ! Génération du CV en cours...");
+    return true;
 }
 
-if (description.value == ""){
-    alert("Mettez une description.");
-    description.focus();
-    return false;
-}
-// if (competences.value == ""){
-//     alert("Mettez une competences.");
-//     competences.focus();
-//     return false;
-// }
-if (formation.value == ""){
-    alert("Mettez le nom de votre formation.");
-    formation.focus();
-    return false;
-}
-}
-
-const chBoxes =
-            document.querySelectorAll('.dropdown-menu input[type="checkbox"]');
-        const dpBtn = 
-            document.getElementById('multiSelectDropdown');
-        let mySelectedListItems = [];
-        function handleCB() {
-            mySelectedListItems = [];
-            let mySelectedListItemsText = '';
-chBoxes.forEach((checkbox) => {
-                if (checkbox.checked) {
-                    mySelectedListItems.push(checkbox.value);
-                    mySelectedListItemsText += checkbox.value + ', ';
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[name="formulaire"]');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            if (validation()) {
+                // Optionnel : Afficher un loader
+                const submitBtn = document.querySelector('input[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.value = "Génération en cours...";
+                    submitBtn.disabled = true;
                 }
-            });
-            dpBtn.innerText =
-                mySelectedListItems.length > 0
-                    ? mySelectedListItemsText.slice(0, -2) : 'Select';
-        }
-
-        chBoxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', handleCB);
+            }
         });
+    }
 
-        
+    const textareas = document.querySelectorAll('textarea');
+    textareas.forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    });
+});
